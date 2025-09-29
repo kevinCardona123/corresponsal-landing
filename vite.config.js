@@ -154,7 +154,7 @@ console.warn = () => {};
 
 export default defineConfig({
 	plugins: [react(), addTransformIndexHtml],
-	base: '/<corresponsal-landing>/',
+	base: '/corresponsal-landing/',
 	server: {
 		cors: true,
 		headers: {
