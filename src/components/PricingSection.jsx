@@ -1,177 +1,151 @@
-
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, X } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Check, X, Megaphone, Zap, ShieldCheck } from "lucide-react";
 
-const PricingSection = () => {
-  const [billingCycle, setBillingCycle] = useState("monthly");
+// El componente ya no necesita estado ya que no hay ciclo de facturación
+const OpportunitySection = ({ ctaLink = "#registration-form" }) => {
 
-  const pricingPlans = [
+  const opportunityLevels = [
     {
-      name: "Starter",
-      description: "Perfect for individuals and small projects",
-      monthlyPrice: 12,
-      yearlyPrice: 120,
+      name: "Vinculación Gratuita",
+      description: "¡Empieza a ganar hoy! El riesgo es CERO.",
+      priceHook: "Totalmente GRATIS", // Nuevo campo para el precio/ganancia
+      hookBenefit: "Asegura la Máxima Comisión",
       features: [
-        "Up to 5 team members",
-        "10 projects",
-        "5GB storage",
-        "Basic analytics",
-        "24/7 email support",
+        "Plataforma completa (Recargas, pines, etc.)",
+        "Soporte técnico 24/7",
+        "Activación de bancos básicos",
+        "Capacitación On-Demand",
       ],
       notIncluded: [
-        "Advanced analytics",
-        "Custom integrations",
-        "Priority support",
-        "Team training",
+        "Publicidad Física Personalizada",
+        "Crédito para Iniciar Operación",
       ],
-      cta: "Start Free Trial",
+      cta: "Regístrate Ahora",
       popular: false,
     },
     {
-      name: "Professional",
-      description: "Ideal for growing teams and businesses",
-      monthlyPrice: 29,
-      yearlyPrice: 290,
+      name: "El Aliado Estrella",
+      description: "Tu negocio se convierte en centro de servicios financieros.",
+      priceHook: "Comisión MÁS ALTA",
+      hookBenefit: "Libera TODOS los Bancos",
       features: [
-        "Up to 20 team members",
-        "Unlimited projects",
-        "50GB storage",
-        "Advanced analytics",
-        "Custom integrations",
-        "Priority support",
-        "API access",
+        "Todo lo incluido en Vinculación Gratuita",
+        "Activación de Davivienda y Nequi",
+        "Generación de historial para crédito inicial",
+        "Integraciones especiales para grandes operaciones",
       ],
-      notIncluded: ["Team training", "Dedicated account manager"],
-      cta: "Start Free Trial",
+      notIncluded: [
+        "Publicidad Física Personalizada",
+        "Asesor dedicado para créditos",
+      ],
+      cta: "Quiero la Máxima Comisión",
       popular: true,
     },
     {
-      name: "Enterprise",
-      description: "For large organizations with complex needs",
-      monthlyPrice: 79,
-      yearlyPrice: 790,
+      name: "Oferta Exclusiva (Cupos Limitados)",
+      description: "Solo para los más rápidos: Beneficios extra por tiempo limitado.",
+      priceHook: "Publicidad FÍSICA GRATIS",
+      hookBenefit: "El primero en registrarse gana",
       features: [
-        "Unlimited team members",
-        "Unlimited projects",
-        "500GB storage",
-        "Advanced analytics",
-        "Custom integrations",
-        "Priority support",
-        "API access",
-        "Team training",
-        "Dedicated account manager",
-        "Custom contract",
+        "Todos los beneficios del Aliado Estrella",
+        "Diseño e impresión de publicidad física",
+        "Asesoría directa para solicitud de crédito (si aplica)",
+        "Prioridad en nuevas integraciones bancarias",
       ],
       notIncluded: [],
-      cta: "Contact Sales",
+      cta: "Verificar Disponibilidad",
       popular: false,
     },
   ];
 
   return (
-    <section id="pricing" className="py-20 md:py-28 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-background to-background/50 pointer-events-none"></div>
-      
+    <section id="oportunidad" className="py-20 md:py-28 relative overflow-hidden bg-gray-50">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        
+        {/* Nuevo Título y Subtítulo */}
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-5xl font-extrabold mb-4 text-gray-900"
           >
-            Simple, Transparent <span className="gradient-text">Pricing</span>
+            ¡La **Vinculación** es Totalmente <span className="text-indigo-600">GRATIS</span>!
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg text-muted-foreground mb-8"
+            className="text-xl text-gray-600 font-semibold max-w-2xl mx-auto"
           >
-            Choose the perfect plan for your team's needs. All plans include a 14-day free trial.
+            Regístrese hoy y **asegure el porcentaje más alto de comisión**. Libere los bancos que su negocio necesita ahora.
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex justify-center mb-8"
-          >
-            <Tabs defaultValue="monthly" className="w-full max-w-xs" onValueChange={setBillingCycle}>
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="monthly">Monthly</TabsTrigger>
-                <TabsTrigger value="yearly">
-                  Yearly
-                  <Badge variant="gradient" className="ml-2 py-0 px-1.5">
-                    Save 20%
-                  </Badge>
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </motion.div>
         </div>
 
+        {/* Rejilla de Oportunidades */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, index) => (
+          {opportunityLevels.map((plan, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`pricing-card rounded-xl p-6 flex flex-col h-full relative ${
-                plan.popular ? "pricing-card-highlight" : ""
-              }`}
+              className={`rounded-xl p-8 flex flex-col h-full relative border-4 transition-all duration-300
+                ${plan.popular ? "border-indigo-500 bg-white shadow-2xl" : "border-gray-200 bg-white shadow-lg"}
+              `}
             >
               {plan.popular && (
                 <Badge
-                  variant="gradient"
-                  className="absolute -top-3 right-6 py-1 px-3"
+                  variant="default"
+                  className="absolute -top-3 right-6 py-1 px-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold"
                 >
-                  Most Popular
+                  Más Rápido Gana
                 </Badge>
               )}
-              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-              <p className="text-muted-foreground mb-6">{plan.description}</p>
-              <div className="mb-6">
-                <span className="text-4xl font-bold">
-                  ${billingCycle === "monthly" ? plan.monthlyPrice : plan.yearlyPrice}
+              
+              {/* Título y Descripción */}
+              <h3 className="text-2xl font-bold mb-2 text-gray-800">{plan.name}</h3>
+              <p className="text-sm text-gray-500 mb-4">{plan.description}</p>
+              
+              {/* Hook de Precio/Valor */}
+              <div className="mb-6 border-b pb-4">
+                <span className={`text-4xl font-extrabold ${plan.popular ? 'text-purple-600' : 'text-indigo-600'}`}>
+                  {plan.priceHook}
                 </span>
-                <span className="text-muted-foreground">
-                  /{billingCycle === "monthly" ? "month" : "year"}
-                </span>
+                <p className="text-lg font-semibold text-red-500 mt-1">{plan.hookBenefit}</p>
               </div>
 
+              {/* Lo que está incluido */}
               <div className="mb-8 flex-grow">
-                <h4 className="font-semibold mb-3 text-sm uppercase tracking-wider text-muted-foreground">
-                  What's included:
+                <h4 className="font-bold mb-3 text-base uppercase tracking-wider text-gray-600">
+                  Beneficios:
                 </h4>
                 <ul className="space-y-3">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start">
                       <Check className="h-5 w-5 text-indigo-400 mr-2 shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
+                      <span className="text-sm text-gray-700">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
+                {/* Lo que NO está incluido (Oportunidades de Up-sell/Cross-sell) */}
                 {plan.notIncluded.length > 0 && (
                   <>
-                    <h4 className="font-semibold mb-3 mt-6 text-sm uppercase tracking-wider text-muted-foreground">
-                      Not included:
+                    <h4 className="font-bold mb-3 mt-6 text-sm uppercase tracking-wider text-gray-400">
+                      Exclusiones Temporales:
                     </h4>
                     <ul className="space-y-3">
                       {plan.notIncluded.map((feature, i) => (
-                        <li key={i} className="flex items-start">
-                          <X className="h-5 w-5 text-muted-foreground mr-2 shrink-0 mt-0.5" />
-                          <span className="text-sm text-muted-foreground">{feature}</span>
+                        <li key={i} className="flex items-start opacity-70">
+                          <X className="h-5 w-5 text-red-400 mr-2 shrink-0 mt-0.5" />
+                          <span className="text-sm text-gray-500">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -179,15 +153,17 @@ const PricingSection = () => {
                 )}
               </div>
 
+              {/* Botón CTA */}
               <Button
-                className={`w-full ${
+                asChild
+                className={`w-full text-lg font-bold py-6 transition-all duration-300 ${
                   plan.popular
                     ? "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white border-0"
-                    : ""
+                    : "bg-indigo-400 hover:bg-indigo-500" // Botón secundario en un tono más suave
                 }`}
-                variant={plan.popular ? "default" : "outline"}
+                variant="default"
               >
-                {plan.cta}
+                <a href={ctaLink}>{plan.cta}</a>
               </Button>
             </motion.div>
           ))}
@@ -197,4 +173,4 @@ const PricingSection = () => {
   );
 };
 
-export default PricingSection;
+export default OpportunitySection;
