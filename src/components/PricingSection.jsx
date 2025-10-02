@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, X, Megaphone, Zap, ShieldCheck } from "lucide-react";
 
 // El componente ya no necesita estado ya que no hay ciclo de facturación
-const OpportunitySection = ({ ctaLink = "#registration-form" }) => {
+const OpportunitySection = ({ ctaLink = "#registro" }) => {
 
   const opportunityLevels = [
     {

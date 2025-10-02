@@ -42,6 +42,11 @@ const CTASection = () => {
             <Button
               size="lg"
               className="bg-white text-indigo-900 hover:bg-gray-100 border-0 w-full sm:w-auto"
+              onClick={() => {
+                const el = document.getElementById('registro');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              aria-label="Ir al registro"
             >
               Registro Gratuito <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

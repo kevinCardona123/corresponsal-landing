@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 
 const RegistrationSection = () => {
   return (
-    <section className="relative pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden bg-white"> 
+    <section id="registro" className="relative pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden bg-white"> 
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
@@ -68,13 +68,17 @@ const RegistrationSection = () => {
             </motion.div>
             
             {/* CTA Final que puede llevar al formulario si no está a la vista */}
-            <Button
-                size="lg"
-                className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white border-0 w-full sm:w-auto mt-4"
-                // Aquí puedes agregar un onClick que haga scroll hacia el formulario si este está en la misma sección
-            >
-                Vincularme ahora <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+      <Button
+        size="lg"
+        className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white border-0 w-full sm:w-auto mt-4"
+        onClick={() => {
+          const el = document.getElementById('registro');
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }}
+        aria-label="Ir al registro"
+      >
+        Vincularme ahora <ArrowRight className="ml-2 h-4 w-4" />
+      </Button>
           </motion.div>
           
           {/* Columna Derecha: Formulario Embebido (El foco de la sección) */}
@@ -94,7 +98,7 @@ const RegistrationSection = () => {
             <div className="bg-white rounded-xl overflow-hidden">
               <iframe 
                 // REEMPLAZA ESTE SRC CON TU IFRAME FINAL DE BREVO
-                className="w-full h-[700px] rounded-xl" 
+                className="w-full h-[780px] rounded-xl" 
                 src="https://5253161e.sibforms.com/serve/MUIFAJowyucdE88RnvKACSSuVSfms7_B1TZVqjAedQGDOsMDiUhE9PJJ0vx52mEdgEx59hQA-8-HPMsIHktzNMpweW_8ueDz0PzJOfvaBI15s4FrOMMeGrinplpeuSjj-alde3ElhhW00Qhty02ud-LbWUQJIN197ByLLaTHRlHmWzVl47Grs5AryLC7iTJWZ53CqtByjsmxuTdE" 
                 frameBorder="0" 
                 scrolling="no" // Cambiado a 'no' para evitar barras de desplazamiento dobles

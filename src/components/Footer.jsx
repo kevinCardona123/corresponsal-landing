@@ -4,6 +4,7 @@ import {
   Linkedin, 
   Github, 
   Instagram,
+  Facebook,
 } from "lucide-react";
 import logo from "../img/logo_be.png"; // Asegúrate que la ruta a tu logo sea correcta
 
@@ -30,13 +31,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-6 mt-2"> {/* Aumentado el espacio entre iconos */}
               <a href="#" className="text-muted-foreground hover:text-white transition-colors">
-                <Twitter className="h-5 w-5" />
+                <Instagram className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-white transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-white transition-colors">
-                <Github className="h-5 w-5" />
+                <Facebook className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-white transition-colors">
                 <Instagram className="h-5 w-5" />

@@ -87,6 +87,11 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white border-0 w-full sm:w-auto"
+                onClick={() => {
+                const el = document.getElementById('registro');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              aria-label="Ir al registro"
               >
                 Comienza ahora sin costo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

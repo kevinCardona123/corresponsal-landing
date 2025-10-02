@@ -51,10 +51,10 @@ const Navbar = () => {
               Funcionalidades
             </a>
             <a
-              href="#pricing"
+              href="#oportunidad"
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
-              Precio
+              Oportunidad
             </a>
             <a
               href="#testimonials"
@@ -74,7 +74,14 @@ const Navbar = () => {
             <Button variant="ghost" className="text-sm text-muted-foreground">
               Contactar Ventas
             </Button>
-            <Button>
+            
+            <Button
+              onClick={() => {
+                const el = document.getElementById('registro');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              aria-label="Ir al registro"
+            >
               Vincularme Ahora
             </Button>
           </div>
@@ -112,7 +119,7 @@ const Navbar = () => {
                 Funcionalidades
               </a>
               <a
-                href="#pricing"
+                href="#oportunidad"
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -136,7 +143,15 @@ const Navbar = () => {
                 <Button variant="ghost" className="text-sm justify-start text-muted-foreground">
                   Contactar Ventas
                 </Button>
-                <Button className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white border-0">
+                <Button
+                  className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white border-0"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    const el = document.getElementById('registro');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  aria-label="Ir al registro"
+                >
                   Comienza Ahora
                 </Button>
               </div>
