@@ -26,7 +26,7 @@ const Footer = () => {
               />
             </a>
             <p className="text-muted-foreground max-w-md">
-              The all-in-one platform that helps teams collaborate, manage projects, and deliver results faster than ever before.
+              Bemovil: La única plataforma que necesita para que su tienda gane más, sin fallas.
             </p>
             <div className="flex space-x-6 mt-2"> {/* Aumentado el espacio entre iconos */}
               <a href="#" className="text-muted-foreground hover:text-white transition-colors">
